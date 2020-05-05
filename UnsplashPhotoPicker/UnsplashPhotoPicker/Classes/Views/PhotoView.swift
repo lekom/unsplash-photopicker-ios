@@ -80,11 +80,9 @@ class PhotoView: UIView {
     private func sizedImageURL(from url: URL) -> URL {
         let width: CGFloat = frame.width * screenScale
         let height: CGFloat = frame.height * screenScale
-
-        return url.appending(queryItems: [
-            URLQueryItem(name: "max-w", value: "\(width)"),
-            URLQueryItem(name: "max-h", value: "\(height)")
-        ])
+        
+        let string = url.absoluteString + "&max-w=\(width)&max-h=\(height)"
+        return URL(string: string)!
     }
 
     // MARK: - Utility
